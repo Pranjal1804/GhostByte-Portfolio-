@@ -57,7 +57,14 @@ body {
   
   .profile-info h2 {
     font-size: 9rem;
-    font-family:DM Serif Text;
+    
+  }
+  .para{
+    font-size: 20px;
+    font-family:Source Code Pro;
+  }
+  .start{
+    font-size: 30px;
   }
   
   .projects {
