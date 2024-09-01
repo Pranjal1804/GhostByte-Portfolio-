@@ -1,13 +1,67 @@
 ---
-// src/components/Header.astro
+const logoText = "GhostByte"; // Your logo text
+const letters = logoText.split(''); // Split the text into individual letters
 ---
-<header class="header">
-  <h1 class="logo">GhostByte</h1>
-  <nav>
-    <ul class="nav-links">
-      <li><a href="#about">About</a></li>
-      <li><a href="#projects">Projects</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
+
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    background-color: #1a1a1a;
+  }
+
+  .logo {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #e45c07;
+  }
+
+  .logo span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 0.5s forwards;
+  }
+
+  /* Keyframes for the animation */
+  @keyframes fadeInUp {
+    0% {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Add any additional styling you want for the navbar or links */
+  .nav-links a {
+    color: #e45c07;
+    margin-left: 1rem;
+    text-decoration: none;
+    font-size: 1rem;
+  }
+
+  .nav-links a:hover {
+    color: #f0f0f0;
+  }
+</style>
+
+<header class="navbar">
+  <!-- Animated Logo inside the Navbar -->
+  <div class="logo">
+    {letters.map((letter, index) => (
+      <span style={`animation-delay: ${index * 0.1}s`}>{letter}</span>
+    ))}
+  </div>
+  <!-- Navigation Links -->
+  <nav class="nav-links">
+    <a href="#profile">Profile</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
   </nav>
 </header>
