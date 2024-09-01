@@ -56,7 +56,8 @@ body {
   }
   
   .profile-info h2 {
-    font-size: 6rem;
+    font-size: 9rem;
+    font-family:DM Serif Text;
   }
   
   .projects {
