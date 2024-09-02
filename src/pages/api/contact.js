@@ -4,14 +4,9 @@ export async function post({ request }) {
     const name = formData.get('name');
     const email = formData.get('email');
     const message = formData.get('message');
-  
-    // Validate the form data (optional, but recommended)
     if (!name || !email || !message) {
       return new Response('All fields are required', { status: 400 });
     }
-  
-    // You can store the data in a file, database, or send it via email
-    // Here, we'll demonstrate saving it to a simple JSON file for simplicity
     try {
       const fs = await import('fs').then((mod) => mod.promises);
       const path = await import('path');
