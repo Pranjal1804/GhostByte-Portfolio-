@@ -11,10 +11,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
-// Enable CORS
+
 app.use(cors());
 
-// Middleware to parse JSON requests
+
 app.use(bodyParser.json());
 
 app.post('/submit', (req, res) => {
