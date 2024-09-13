@@ -1,12 +1,42 @@
 ---
-// src/components/Contact.astro
 ---
 <section id="contact" class="contact">
   <h2>Contact Me</h2>
-  <form action="#" method="POST" class="contact-form">
+  <form id="contact-form" class="contact-form">
     <input type="text" name="name" placeholder="Your Name" required />
     <input type="email" name="email" placeholder="Your Email" required />
     <textarea name="message" placeholder="Your Message" required></textarea>
     <button type="submit">Send Message</button>
   </form>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+
+      // Convert form data to JSON
+      const data = {
+        name: formData.get('name'),
+        email: formData.get('email'),
+        message: formData.get('message')
+      };
+
+      try {
+        const response = await fetch('http://localhost:3000/submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(data)
+        });
+
+        const result = await response.json();
+        alert(result.success || result.error);
+      } catch (error) {
+        console.error('Error submitting form:', error);
+        alert('Failed to send the message. Please try again later.');
+      }
+    });
+  </script>
 </section>
